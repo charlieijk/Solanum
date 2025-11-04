@@ -4,14 +4,6 @@
 
 A beautiful iOS app that combines the Pomodoro Technique with real-time GitHub analytics to help developers stay productive and maintain consistent contributions.
 
-[![Swift](https://img.shields.io/badge/Swift-5.9-orange.svg)](https://swift.org)
-[![iOS](https://img.shields.io/badge/iOS-16.0+-blue.svg)](https://www.apple.com/ios/)
-[![SwiftUI](https://img.shields.io/badge/SwiftUI-4.0-green.svg)](https://developer.apple.com/xcode/swiftui/)
-[![License](https://img.shields.io/badge/License-MIT-purple.svg)](LICENSE)
-
-<p align="center">
-  <img src="screenshots/hero.png" alt="Solanum App Preview" width="800">
-</p>
 
 ## 🌟 Why Solanum?
 
@@ -55,18 +47,6 @@ Solanum solves these problems by combining focused work sessions with intelligen
 - **Project time breakdown** - See where your hours go
 - **Session history** - Review past work sessions
 - **Export data** - Download your stats as CSV/JSON
-
----
-
-## 📱 Screenshots
-
-<p align="center">
-  <img src="screenshots/timer.png" alt="Timer View" width="250">
-  <img src="screenshots/stats.png" alt="Stats View" width="250">
-  <img src="screenshots/insights.png" alt="Insights View" width="250">
-</p>
-
-*More screenshots coming soon as features are developed!*
 
 ---
 
@@ -332,49 +312,6 @@ Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction...
 ```
-
----
-
-## 👨‍💻 Author
-
-**Charlie** ([@charlieijk](https://github.com/charlieijk))
-
-- Computer Science Student at CCSF
-- Passionate about Full Stack Development, Machine Learning, Systems Programming
-- Building tools to help developers stay productive
-
-### My Portfolio Projects
-
-- **[BitTorrent](https://github.com/charlieijk/BitTorrent)** - Custom BitTorrent protocol implementation in Rust
-- **[ApiGateway](https://github.com/charlieijk/ApiGateway)** - Go-based router implementation
-- **[PredictiveStockAnalysis](https://github.com/charlieijk/PredictiveStockAnalysis)** - ML-powered stock prediction
-- **Solanum** - This project! 🍅
-
----
-
-## 🙏 Acknowledgments
-
-- **Francesco Cirillo** - Creator of the Pomodoro Technique
-- **Apple** - For SwiftUI and excellent development tools
-- **GitHub** - For the comprehensive API
-- **The iOS Dev Community** - For inspiration and guidance
-
----
-
-## 📬 Contact & Support
-
-- **GitHub Issues:** [Report a bug](https://github.com/charlieijk/Solanum/issues)
-- **Discussions:** [Ask questions or share ideas](https://github.com/charlieijk/Solanum/discussions)
-- **Email:** [Your email here]
-
----
-
-## 🌟 Star History
-
-If you find Solanum useful, please consider giving it a star! ⭐
-
-[![Star History Chart](https://api.star-history.com/svg?repos=charlieijk/Solanum&type=Date)](https://star-history.com/#charlieijk/Solanum&Date)
-
 ---
 
 ## 📈 Project Status
@@ -390,13 +327,3 @@ If you find Solanum useful, please consider giving it a star! ⭐
 - ✅ Beautiful gradient UI
 - ✅ Session tracking
 - 🚧 GitHub integration (in progress)
-
----
-
-<p align="center">
-  <b>Built with ❤️ and lots of ☕ by <a href="https://github.com/charlieijk">@charlieijk</a></b>
-</p>
-
-<p align="center">
-  <sub>Tomato emoji not included in binary. 🍅</sub>
-</p>
