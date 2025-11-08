@@ -5,6 +5,7 @@
 
 import Foundation
 import SwiftUI
+internal import Combine
 
 @MainActor
 class TimerViewModel: ObservableObject {
@@ -15,10 +16,14 @@ class TimerViewModel: ObservableObject {
     @Published var sessionType: SessionType = .focus
     @Published var completedSessions: [PomodoroSession] = []
     @Published var sessionsUntilLongBreak = 4
-    
+    @Published var currentProject: String?
+    @Published var showCelebration = false
+
     // MARK: - Private Properties
     private var timer: Timer?
     private var sessionCount = 0
+    private let soundManager = SoundManager.shared
+    private let notificationManager = NotificationManager.shared
     
     // MARK: - Computed Properties
     var progress: Double {
@@ -62,13 +67,21 @@ class TimerViewModel: ObservableObject {
     // MARK: - Timer Control Methods
     func startTimer() {
         guard !isRunning else { return }
-        
+
         if currentSession == nil {
-            currentSession = PomodoroSession(sessionType: sessionType)
+            var session = PomodoroSession(sessionType: sessionType)
+            if let project = currentProject {
+                session.setProject(name: project)
+            }
+            currentSession = session
         }
-        
+
         isRunning = true
-        
+        soundManager.playSessionStart()
+
+        // Schedule notification for session end
+        notificationManager.scheduleSessionEnd(for: sessionType, in: timeRemaining)
+
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
             Task { @MainActor in
                 self?.tick()
@@ -80,6 +93,7 @@ class TimerViewModel: ObservableObject {
         isRunning = false
         timer?.invalidate()
         timer = nil
+        notificationManager.cancelAllNotifications()
     }
     
     func skipSession() {
@@ -105,6 +119,15 @@ class TimerViewModel: ObservableObject {
     
     private func sessionComplete() {
         pauseTimer()
+        soundManager.playSessionComplete()
+        showCelebration = true
+
+        // Hide celebration after 2 seconds
+        Task {
+            try? await Task.sleep(nanoseconds: 2_000_000_000)
+            showCelebration = false
+        }
+
         completeCurrentSession(forced: false)
         prepareNextSession()
     }
@@ -142,7 +165,39 @@ class TimerViewModel: ObservableObject {
     }
     
     func setProject(name: String) {
-        currentSession?.setProject(name: name)
+        currentProject = name
+        if var session = currentSession {
+            session.setProject(name: name)
+            currentSession = session
+        }
+    }
+
+    func clearAllData() {
+        completedSessions.removeAll()
+        sessionCount = 0
+        sessionsUntilLongBreak = 4
+        saveSessions()
+    }
+
+    // MARK: - Advanced Analytics
+    func getProductivityScore() -> Double {
+        let totalSessions = completedSessions.filter { $0.isCompleted }.count
+        let totalPossibleSessions = max(1, Calendar.current.dateComponents([.day], from: completedSessions.first?.startTime ?? Date(), to: Date()).day ?? 1) * 8
+
+        return min(1.0, Double(totalSessions) / Double(totalPossibleSessions))
+    }
+
+    func getWeeklyComparison() -> (current: Int, previous: Int) {
+        let calendar = Calendar.current
+        let now = Date()
+
+        let thisWeekStart = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: now))!
+        let lastWeekStart = calendar.date(byAdding: .weekOfYear, value: -1, to: thisWeekStart)!
+
+        let thisWeek = completedSessions.filter { $0.startTime >= thisWeekStart && $0.isCompleted }.count
+        let lastWeek = completedSessions.filter { $0.startTime >= lastWeekStart && $0.startTime < thisWeekStart && $0.isCompleted }.count
+
+        return (thisWeek, lastWeek)
     }
     
     // MARK: - Persistence
