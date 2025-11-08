@@ -1,131 +1,331 @@
-# 📦 Solanum - Complete Package
+# Solanum 🍅
 
-Welcome! You have everything you need to build and run your Pomodoro timer app.
+> **Developer Productivity Pomodoro Timer with GitHub Integration**
 
-## 📚 Documentation
+A beautiful iOS app that combines the Pomodoro Technique with real-time GitHub analytics to help developers stay productive and maintain consistent contributions.
 
-Start with whichever guide matches your needs:
 
-### 🏃 **QUICK_START.md** ← Start here!
-30-second guide to opening and running the app. Perfect if you just want to see it work immediately.
+## 🌟 Why Solanum?
 
-### 📖 **GETTING_STARTED.md**
-Step-by-step tutorial covering:
-- How to open the project in Xcode
-- Understanding the features
-- Troubleshooting common issues
-- Where to start customizing
+The Pomodoro Technique gets its name from the Italian word for tomato 🍅. **Solanum** is the genus that includes tomatoes (*Solanum lycopersicum*), creating a clever botanical connection while giving the app a unique, memorable identity.
 
-### 📊 **PROJECT_SUMMARY.md**
-High-level overview showing:
-- What's included in the project
-- Feature list with checkmarks
-- Code statistics
-- Why this rebuild is better
+As developers, we often struggle with:
+- **Inconsistent GitHub activity** - Breaking our contribution streaks
+- **Context switching** - Jumping between projects without focus
+- **Portfolio neglect** - Some repos get attention while others collect dust
+- **Productivity tracking** - Not knowing where our time actually goes
 
-### 🏗️ **ARCHITECTURE.md**
-Deep dive into the code structure:
-- Visual diagrams of the app flow
-- Component breakdown
-- Data flow patterns
-- Design decisions explained
-
-### 📝 **Solanum/README.md**
-Traditional project README in the source folder covering features, requirements, and future enhancements.
-
-## 📂 Project Structure
-
-```
-📦 Solanum/
-├── 📄 Solanum.xcodeproj         ← Double-click to open!
-│   └── project.pbxproj
-├── 📁 Solanum/
-│   ├── 🎯 SolanumApp.swift      (Entry point)
-│   ├── 🎨 ContentView.swift     (UI layer - 366 lines)
-│   ├── 📊 Models.swift          (Data models - 83 lines)
-│   ├── 🧠 TimerViewModel.swift  (Business logic - 163 lines)
-│   └── 🎨 Assets.xcassets/
-│       ├── AppIcon.appiconset/
-│       └── AccentColor.colorset/
-└── 📖 README.md
-```
-
-## ✨ Features at a Glance
-
-- ✅ 25-minute focus sessions (🍅)
-- ✅ 5-minute short breaks (☕️)
-- ✅ 15-minute long breaks (🌙)
-- ✅ Automatic session cycling
-- ✅ Project tracking
-- ✅ Daily statistics
-- ✅ Session history
-- ✅ Data persistence
-- ✅ Beautiful gradient backgrounds
-- ✅ Smooth animations
-
-## 🎯 Quick Actions
-
-| Want to... | Do this... |
-|------------|------------|
-| **Run the app** | Open `Solanum.xcodeproj` → Press Cmd+R |
-| **Change timer durations** | Edit `SessionType.duration` in `Models.swift` |
-| **Modify colors** | Edit `gradientColors` in `ContentView.swift` |
-| **Add projects** | Edit the `projects` array in `ProjectPickerView` |
-| **Understand the code** | Read `ARCHITECTURE.md` |
-
-## 💻 Requirements
-
-- **macOS** with Xcode 15+
-- **iOS 17+** simulator or device
-- **5 minutes** to build and run
-
-## 🎨 What It Looks Like
-
-The app features three distinct color schemes:
-
-**Focus Mode (🍅)**
-- Warm red gradient background
-- White circular progress ring
-- 25:00 countdown timer
-
-**Short Break (☕️)**  
-- Cool blue gradient background
-- 5:00 countdown
-
-**Long Break (🌙)**
-- Deep purple gradient background  
-- 15:00 countdown
-
-## 🔧 Code Quality
-
-- ✅ **MVVM Architecture** - Clean separation of concerns
-- ✅ **SwiftUI** - Modern, declarative UI
-- ✅ **Thread-safe** - @MainActor for UI operations
-- ✅ **Persistent** - UserDefaults storage
-- ✅ **Type-safe** - Full Swift type system
-- ✅ **Documented** - Comments throughout
-- ✅ **629 lines** - Concise, readable code
-
-## 📈 Next Steps
-
-1. **Open and run** the project (5 minutes)
-2. **Try all features** - Start timers, switch projects, view history
-3. **Read the code** - Start with `ContentView.swift` to see the UI
-4. **Customize** - Change colors, add features, make it yours!
-5. **Build something great** - Use Solanum to build more apps! 🚀
-
-## 🤝 Support
-
-If you run into issues:
-1. Check `GETTING_STARTED.md` troubleshooting section
-2. Clean build folder: Product → Clean Build Folder (Cmd+Shift+K)
-3. Restart Xcode and try again
-
-## 🎉 You're All Set!
-
-Everything is ready to go. Open `Solanum.xcodeproj` and start building!
+Solanum solves these problems by combining focused work sessions with intelligent insights about your coding habits.
 
 ---
 
-Made with ❤️ for productive coding sessions
-Named after *Solanum lycopersicum* (the tomato) 🍅
+## ✨ Features
+
+### 🎯 Smart Pomodoro Timer
+- **25-minute focus sessions** with 5-minute breaks
+- **Long breaks** (15 min) after every 4 sessions
+- **Beautiful circular progress** indicator with gradient animations
+- **Session tagging** - Track which project you're working on
+- **Automatic transitions** between work and break periods
+- **Persistent history** - Never lose track of your sessions
+
+### 📊 GitHub Integration *(Coming Soon)*
+- **Real-time statistics** from your GitHub profile
+- **Language distribution** - See which languages you're using most
+- **Contribution tracking** - Monitor your commit streaks
+- **Repository activity** - Identify inactive projects
+- **Commit patterns** - Discover your most productive times
+
+### 🧠 Intelligent Insights *(Coming Soon)*
+- **Portfolio recommendations** - "Python activity down 40% this week"
+- **Streak maintenance** - Never break your contribution streak
+- **Balance suggestions** - Distribute time across your projects
+- **Productivity analytics** - Track focus time and session completion rates
+
+### 📈 Analytics Dashboard *(Coming Soon)*
+- **Weekly activity charts** - Visualize your coding patterns
+- **Project time breakdown** - See where your hours go
+- **Session history** - Review past work sessions
+- **Export data** - Download your stats as CSV/JSON
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- **macOS** 13.0 (Ventura) or later
+- **Xcode** 15.0 or later
+- **iOS 16.0+** device or simulator
+- **Swift** 5.9+
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/charlieijk/Solanum.git
+   cd Solanum
+   ```
+
+2. **Open in Xcode**
+   ```bash
+   open Solanum.xcodeproj
+   ```
+
+3. **Select your target**
+   - Choose a simulator or connected device
+   - Recommended: iPhone 15 Pro simulator
+
+4. **Build and run**
+   - Press `Cmd + R` or click the Play button ▶️
+   - The app will launch in the simulator/device
+
+### First Run
+
+1. Start your first Pomodoro session
+2. Tap **"Select Project"** to tag your work
+3. Focus for 25 minutes
+4. Take a well-deserved break!
+
+---
+
+## 🏗️ Project Structure
+
+```
+Solanum/
+├── Models/
+│   └── PomodoroSession.swift      # Data model for timer sessions
+├── Views/
+│   └── TimerView.swift            # Main timer interface
+├── ViewModels/
+│   └── TimerViewModel.swift       # Timer business logic
+├── Services/                      # (Coming soon)
+│   ├── GitHubAPIService.swift     # GitHub API integration
+│   └── NotificationManager.swift  # Push notifications
+├── Utilities/                     # (Coming soon)
+│   └── Extensions.swift           # Helper extensions
+└── SolanumApp.swift              # App entry point
+```
+
+---
+
+## 🛠️ Tech Stack
+
+- **Language:** Swift 5.9
+- **UI Framework:** SwiftUI
+- **Architecture:** MVVM (Model-View-ViewModel)
+- **Data Persistence:** UserDefaults (Core Data planned)
+- **API Integration:** GitHub REST API v3 (in progress)
+- **Charts:** Swift Charts (planned)
+- **Design:** Custom gradient theme with glassmorphism
+
+---
+
+## 🎨 Design Philosophy
+
+Solanum features a modern, developer-friendly interface with:
+
+- **Dark-first design** - Easy on the eyes during long coding sessions
+- **Purple-pink gradients** - Energetic yet calming color scheme
+- **Glassmorphism** - Frosted glass effects for depth
+- **Smooth animations** - Spring-based transitions
+- **SF Symbols** - Native iOS icons for consistency
+- **Accessibility** - VoiceOver support and dynamic type (planned)
+
+### Color Palette
+
+```swift
+Primary: Purple (#A855F7)
+Secondary: Pink (#EC4899)
+Background: Slate-900 (#0F172A)
+Surface: White/5% opacity
+Text: White (#FFFFFF)
+```
+
+---
+
+## 📖 Usage
+
+### Basic Timer Flow
+
+```swift
+1. Open app → Timer starts at 25:00
+2. Tap "Start" → Timer begins counting down
+3. (Optional) Tap "Select Project" → Tag your session
+4. Work until timer completes → 🔔 Notification
+5. Take a 5-minute break
+6. Repeat 4 times → Earn a 15-minute long break
+```
+
+### Session Management
+
+- **Pause:** Tap the pause button anytime
+- **Skip:** Jump to the next session (break or focus)
+- **Stats:** View today's completed sessions
+- **History:** Access past sessions (coming soon)
+
+---
+
+## 🗺️ Roadmap
+
+### Phase 1: MVP ✅ *Current Phase*
+- [x] Basic Pomodoro timer (25/5/15)
+- [x] Start/Pause/Skip controls
+- [x] Session tracking
+- [x] Project tagging
+- [x] Today's statistics
+- [x] Beautiful UI with animations
+
+### Phase 2: GitHub Integration 🚧 *In Progress*
+- [ ] GitHub OAuth authentication
+- [ ] Fetch user profile and repos
+- [ ] Display language distribution
+- [ ] Track commit history
+- [ ] Show contribution streaks
+- [ ] Repository list view
+
+### Phase 3: Analytics & Insights 📋 *Planned*
+- [ ] Weekly/monthly charts
+- [ ] Project time breakdown
+- [ ] Intelligent recommendations
+- [ ] Portfolio gap analysis
+- [ ] Productivity trends
+- [ ] Export data feature
+
+### Phase 4: Polish & Advanced Features 🎯 *Future*
+- [ ] Local notifications
+- [ ] Background timer support
+- [ ] Sound effects and haptics
+- [ ] Custom timer durations
+- [ ] Dark/light mode toggle
+- [ ] iPad optimization
+- [ ] Widgets (iOS 17+)
+- [ ] Apple Watch companion app
+- [ ] Siri shortcuts
+- [ ] iCloud sync
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Whether it's:
+
+- 🐛 Bug reports
+- 💡 Feature suggestions
+- 📝 Documentation improvements
+- 🎨 UI/UX enhancements
+- 🧪 Testing and feedback
+
+### How to Contribute
+
+1. **Fork the repository**
+2. **Create a feature branch**
+   ```bash
+   git checkout -b feature/amazing-feature
+   ```
+3. **Commit your changes**
+   ```bash
+   git commit -m "Add some amazing feature"
+   ```
+4. **Push to your branch**
+   ```bash
+   git push origin feature/amazing-feature
+   ```
+5. **Open a Pull Request**
+
+### Development Setup
+
+```bash
+# Clone your fork
+git clone https://github.com/YOUR_USERNAME/Solanum.git
+
+# Create a branch
+git checkout -b feature/my-new-feature
+
+# Make your changes and test
+# Open Solanum.xcodeproj in Xcode
+
+# Commit and push
+git add .
+git commit -m "Description of changes"
+git push origin feature/my-new-feature
+```
+
+---
+
+## 📊 GitHub Stats Integration
+
+### API Endpoints Used
+
+```
+Base URL: https://api.github.com
+
+- GET /users/{username}              # User profile
+- GET /users/{username}/repos        # Repository list
+- GET /repos/{owner}/{repo}/commits  # Commit history
+- GET /repos/{owner}/{repo}/languages # Language stats
+- GET /users/{username}/events       # Activity feed
+```
+
+### Rate Limits
+
+- **Unauthenticated:** 60 requests/hour
+- **Authenticated:** 5,000 requests/hour
+
+*OAuth authentication required for full functionality.*
+
+---
+
+## 🧪 Testing
+
+### Running Tests
+
+```bash
+# Run all tests
+Cmd + U in Xcode
+
+# Or via command line
+xcodebuild test -scheme Solanum -destination 'platform=iOS Simulator,name=iPhone 15 Pro'
+```
+
+### Test Coverage
+
+- [ ] Timer logic unit tests
+- [ ] Session persistence tests
+- [ ] GitHub API integration tests
+- [ ] UI snapshot tests
+
+*Testing framework will be expanded as features are added.*
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+```
+MIT License
+
+Copyright (c) 2025 Charlie (@charlieijk)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction...
+```
+---
+
+## 📈 Project Status
+
+**Current Version:** 0.1.0-alpha
+**Development Status:** Active 🟢
+**Last Updated:** November 7, 2025
+
+### Recent Updates
+
+- ✅ Initial project setup
+- ✅ Core timer functionality
+- ✅ Beautiful gradient UI
+- ✅ Session tracking
+- ✅ Notifications and haptics
+- ✅ Settings and history views
+- 🚧 GitHub integration (in progress)
