@@ -17,10 +17,12 @@ class TimerViewModel: ObservableObject {
     @Published var sessionType: SessionType = .focus
     @Published var completedSessions: [PomodoroSession] = []
     @Published var sessionsUntilLongBreak = 4
-    
+
     // MARK: - Private Properties
     private var timer: Timer?
     private var sessionCount = 0
+    private let notificationManager = NotificationManager.shared
+    private let hapticManager = HapticManager.shared
     
     // MARK: - Computed Properties
     
@@ -58,23 +60,33 @@ class TimerViewModel: ObservableObject {
     }
     
     // MARK: - Initialization
-    
+
     init() {
         loadSessions()
+        Task {
+            await notificationManager.requestPermission()
+        }
     }
     
     // MARK: - Timer Control Methods
     
     func startTimer() {
         guard !isRunning else { return }
-        
+
         // Create new session if needed
         if currentSession == nil {
             currentSession = PomodoroSession(sessionType: sessionType)
         }
-        
+
         isRunning = true
-        
+        hapticManager.sessionStart()
+
+        // Schedule notification for session completion
+        notificationManager.scheduleSessionCompletion(
+            for: sessionType,
+            in: timeRemaining
+        )
+
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
             Task { @MainActor in
                 self?.tick()
@@ -86,10 +98,13 @@ class TimerViewModel: ObservableObject {
         isRunning = false
         timer?.invalidate()
         timer = nil
+        hapticManager.sessionPause()
+        notificationManager.cancelSessionNotifications()
     }
-    
+
     func skipSession() {
         pauseTimer()
+        hapticManager.sessionSkip()
         completeCurrentSession(forced: true)
         prepareNextSession()
     }
@@ -113,10 +128,8 @@ class TimerViewModel: ObservableObject {
     
     private func sessionComplete() {
         pauseTimer()
-        
-        // Play completion sound (TODO: Add sound)
-        // Send notification (TODO: Add notification)
-        
+        hapticManager.sessionComplete()
+
         completeCurrentSession(forced: false)
         prepareNextSession()
     }

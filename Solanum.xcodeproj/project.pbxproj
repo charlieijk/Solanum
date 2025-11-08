@@ -14,7 +14,6 @@
 /* Begin PBXFileReference section */
 		CB5AB4E52EBAB69C0062263D /* Solanum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Solanum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB5AB5022EBABFF00062263D /* SolanumApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolanumApp.swift; sourceTree = "<group>"; };
-		CB5AB50A2EBAC04D0062263D /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		CB5AB50B2EBAC1A00062263D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,10 +86,7 @@
 			sourceTree = "<group>";
 		};
 		CB5AB4FF2EBABFD70062263D /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				CB5AB50A2EBAC04D0062263D /* TimerView.swift */,
-			);
+			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Views;
 			sourceTree = "<group>";
 		};
@@ -114,6 +110,7 @@
 				CB5AB4F32EBABF670062263D /* Models */,
 				CB5AB4F52EBABF880062263D /* ViewModels */,
 				CB5AB4FC2EBABFA30062263D /* New Folder */,
+				CB5AB4FF2EBABFD70062263D /* Views */,
 				CB5AB5002EBABFDC0062263D /* Services */,
 				CB5AB5012EBABFE60062263D /* Utilities */,
 			);

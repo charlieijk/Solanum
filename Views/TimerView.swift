@@ -10,40 +10,69 @@ import SwiftUI
 struct TimerView: View {
     @StateObject private var viewModel = TimerViewModel()
     @State private var showProjectPicker = false
-    
+    @State private var showHistory = false
+    @State private var showSettings = false
+
     var body: some View {
-        ZStack {
-            // Background gradient
-            LinearGradient(
-                colors: [
-                    Color(red: 0.06, green: 0.09, blue: 0.16),
-                    Color(red: 0.47, green: 0.15, blue: 0.52),
-                    Color(red: 0.06, green: 0.09, blue: 0.16)
-                ],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .ignoresSafeArea()
-            
-            VStack(spacing: 30) {
-                // Header
-                headerView
-                
-                // Main Timer Circle
-                circularTimer
-                
-                // Controls
-                controlButtons
-                
-                // Session Stats
-                statsCards
-                
-                Spacer()
+        NavigationView {
+            ZStack {
+                // Background gradient
+                LinearGradient(
+                    colors: [
+                        Color(red: 0.06, green: 0.09, blue: 0.16),
+                        Color(red: 0.47, green: 0.15, blue: 0.52),
+                        Color(red: 0.06, green: 0.09, blue: 0.16)
+                    ],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+                .ignoresSafeArea()
+
+                VStack(spacing: 30) {
+                    // Header
+                    headerView
+
+                    // Main Timer Circle
+                    circularTimer
+
+                    // Controls
+                    controlButtons
+
+                    // Session Stats
+                    statsCards
+
+                    // Navigation Buttons
+                    navigationButtons
+
+                    Spacer()
+                }
+                .padding()
             }
-            .padding()
-        }
-        .sheet(isPresented: $showProjectPicker) {
-            ProjectPickerView(viewModel: viewModel)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: { showHistory = true }) {
+                        Image(systemName: "clock.arrow.circlepath")
+                            .foregroundColor(.purple)
+                    }
+                }
+
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: { showSettings = true }) {
+                        Image(systemName: "gearshape")
+                            .foregroundColor(.purple)
+                    }
+                }
+            }
+            .sheet(isPresented: $showProjectPicker) {
+                ProjectPickerView(viewModel: viewModel)
+            }
+            .sheet(isPresented: $showHistory) {
+                SessionHistoryView(viewModel: viewModel)
+            }
+            .sheet(isPresented: $showSettings) {
+                SettingsView(viewModel: viewModel)
+            }
         }
     }
     
@@ -202,6 +231,55 @@ struct TimerView: View {
             )
         }
         .padding(.horizontal)
+    }
+
+    // MARK: - Navigation Buttons
+
+    private var navigationButtons: some View {
+        HStack(spacing: 12) {
+            NavigationButton(
+                title: "History",
+                icon: "clock.arrow.circlepath",
+                action: { showHistory = true }
+            )
+
+            NavigationButton(
+                title: "Settings",
+                icon: "gearshape",
+                action: { showSettings = true }
+            )
+        }
+        .padding(.horizontal)
+    }
+}
+
+// MARK: - Navigation Button Component
+
+struct NavigationButton: View {
+    let title: String
+    let icon: String
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            HStack(spacing: 8) {
+                Image(systemName: icon)
+                    .font(.subheadline)
+
+                Text(title)
+                    .font(.subheadline)
+                    .fontWeight(.medium)
+            }
+            .foregroundColor(.purple.opacity(0.8))
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 12)
+            .background(Color.white.opacity(0.05))
+            .cornerRadius(12)
+            .overlay(
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(Color.white.opacity(0.1), lineWidth: 1)
+            )
+        }
     }
 }
 
