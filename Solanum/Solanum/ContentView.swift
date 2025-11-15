@@ -167,11 +167,11 @@ struct ContentView: View {
     private var gradientColors: [Color] {
         switch viewModel.sessionType {
         case .focus:
-            return [Color(red: 0.9, green: 0.3, blue: 0.3), Color(red: 0.8, green: 0.2, blue: 0.2)]
+            return [.red, .red.opacity(0.8)]
         case .shortBreak:
-            return [Color(red: 0.2, green: 0.6, blue: 0.9), Color(red: 0.1, green: 0.4, blue: 0.8)]
+            return [.blue, .blue.opacity(0.8)]
         case .longBreak:
-            return [Color(red: 0.5, green: 0.3, blue: 0.8), Color(red: 0.4, green: 0.2, blue: 0.7)]
+            return [.purple, .purple.opacity(0.8)]
         }
     }
 }
